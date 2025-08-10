@@ -1,4 +1,3 @@
-import React from "react";
 import type { FieldSchema } from "../types";
 import FieldEditor from "./FieldEditor";
 import { Box, Button } from "@mui/material";

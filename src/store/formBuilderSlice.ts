@@ -8,6 +8,7 @@ interface BuilderState {
 
 const initialState: BuilderState = {
   fields: [],
+  
 };
 
 const slice = createSlice({
@@ -18,12 +19,13 @@ const slice = createSlice({
       const id = cryptoRandomId();
       state.fields.push({
         id,
+        name: "Untitled",
         type: action.payload.type,
         label: "Untitled",
         required: false,
         defaultValue: null,
         options: [],
-        validations: [],
+        validation: {},
         derived: null,
       });
     },

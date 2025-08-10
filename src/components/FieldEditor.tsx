@@ -1,4 +1,3 @@
-import React from "react";
 import type { FieldSchema } from "../types";
 import { Box, TextField, Switch, Typography, Button, IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -46,7 +45,9 @@ export default function FieldEditor({ field, onChange, onDelete }: Props) {
             placeholder="e.g., Apple:1, Orange:2"
             value={(field as any).optionsString ?? ""}
             onChange={(e) => {
-              onChange({ optionsString: e.target.value });
+              const optionsString = e.target.value;
+              (field as any).optionsString = optionsString;
+              // Don't update options here, it will be processed when saving
             }}
             fullWidth
           />
@@ -61,7 +62,7 @@ export default function FieldEditor({ field, onChange, onDelete }: Props) {
             onChange({
               derived: field.derived
                 ? null
-                : { isDerived: true, parents: [], expression: "return null;" },
+                : { expression: "return null;", parents: [], formula: "return null;" },
             })
           }
         >

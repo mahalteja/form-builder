@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState } from "../store";
 import {
@@ -36,12 +36,12 @@ export default function CreateForm() {
       if (!optionsString) {
         return `Options are required for ${field.type} field "${field.label || "(no label)"}"`;
       }
-      const optionPairs = optionsString.split(",").map((opt) => opt.trim());
+      const optionPairs = optionsString.split(",").map((opt: string) => opt.trim());
       for (const pair of optionPairs) {
         if (!pair.includes(":")) {
           return `Option "${pair}" in field "${field.label || "(no label)"}" must be in label:value format`;
         }
-        const [label, value] = pair.split(":").map((s) => s.trim());
+        const [label, value] = pair.split(":").map((s: string) => s.trim());
         if (!label || !value) {
           return `Option "${pair}" in field "${field.label || "(no label)"}" must have both label and value`;
         }

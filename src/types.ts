@@ -22,21 +22,20 @@ export interface FieldOption {
 
 export interface FieldSchema {
   id: string;
-  type: 'text' | 'number' | 'textarea' | 'select' | 'radio' | 'checkbox' | 'date';
+  name: string;
   label: string;
-  required: boolean;
-  defaultValue?: any;
-   options?: string;
-  validation?: {
-    minLength?: number;
-    maxLength?: number;
-    email?: boolean;
-    password?: boolean; // min 8 chars, must contain number
-  };
+  type: "number" | "text" | "textarea" | "select" | "radio" | "checkbox" | "date" | "email";
+  required?: boolean;
+  options?: { label: string; value: string }[];
+  defaultValue?: string | number | string[] | null; // NEW
   derived?: {
     expression: any;
-    parents: string[]; // parent field IDs
-    formula: string;   // e.g., "(2025 - Number(parentValues.dob.split('-')[0]))"
+    parents: string[];
+    formula: string;
+  } | null;
+  validation?: { // NEW
+    email?: boolean;
+    minLength?: number;
   };
 }
 
